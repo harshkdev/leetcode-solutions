@@ -1,0 +1,25 @@
+class Solution {
+    public int minDepth(TreeNode root) {
+
+        // Empty tree
+        if (root == null) {
+            return 0;
+        }
+
+        // Only right child exists
+        if (root.left == null) {
+            return 1 + minDepth(root.right);
+        }
+
+        // Only left child exists
+        if (root.right == null) {
+            return 1 + minDepth(root.left);
+        }
+
+        // Both children exist
+        int left = minDepth(root.left);
+        int right = minDepth(root.right);
+
+        return 1 + Math.min(left, right);
+    }
+}
